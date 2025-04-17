@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<body>
+<div style="background-color: #f2f2f2; padding: 10px; border-bottom: 1px solid #ccc;">
+    <h3>${companyName}</h3>
+    <p>${companyAddress}</p>
+</div>
+</body>
+</html>
