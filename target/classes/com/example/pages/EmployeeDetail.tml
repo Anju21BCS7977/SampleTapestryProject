@@ -1,0 +1,49 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<head>-->
+<!--    <title>Employee Details</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2>Employee Details</h2>-->
+
+<!--<t:if test="employee">-->
+<!--    <p><strong>ID:</strong> ${employee.id}</p>-->
+<!--    <p><strong>Name:</strong> ${employee.name}</p>-->
+<!--    <p><strong>Age:</strong> ${employee.age}</p>-->
+<!--    <p><strong>Address:</strong> ${employee.address}</p>-->
+<!--</t:if>-->
+
+<!--<t:if test="!employee">-->
+<!--    <p>Employee not found.</p>-->
+<!--</t:if>-->
+
+<!--<a href="employeeList">Back to Employee List</a>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <title>Employee Details</title>
+</head>
+<body>
+
+<!-- 🔽 Reusable Company Header Component -->
+<t:companyheader />
+
+<h2>Employee Details</h2>
+
+<t:if test="employee">
+    <p><strong>ID:</strong> ${employee.id}</p>
+    <p><strong>Name:</strong> ${employee.name}</p>
+    <p><strong>Age:</strong> ${employee.age}</p>
+    <p><strong>Address:</strong> ${employee.address}</p>
+</t:if>
+
+<t:if test="!employee">
+    <p>Employee not found.</p>
+</t:if>
+
+<a href="employeeList">Back to Employee List</a>
+
+</body>
+</html>
