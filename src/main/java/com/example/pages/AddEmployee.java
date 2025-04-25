@@ -1,40 +1,3 @@
-//ppackage com.example.pages;
-//
-//import com.example.entity.Employee;
-//import com.example.services.EmployeeService;
-//import jakarta.inject.Inject;
-//import org.apache.tapestry5.annotations.InjectComponent;
-//import org.apache.tapestry5.annotations.Property;
-//import org.apache.tapestry5.corelib.components.Form;
-//
-//public class AddEmployee {
-//
-//    @InjectComponent
-//    private Form employeeForm;
-//
-//    @Property
-//    private Employee employee = new Employee();
-//
-//    @Inject
-//    private EmployeeService employeeService;
-//
-//    void onValidateFromEmployeeForm() {
-//        if (employee.getName() == null || employee.getName().trim().isEmpty()) {
-//            employeeForm.recordError("Name is required.");
-//        }
-//        if (employee.getAge() <= 0) {
-//            employeeForm.recordError("Enter valid age.");
-//        }
-//        if (employee.getAddress() == null || employee.getAddress().trim().isEmpty()) {
-//            employeeForm.recordError("Address is required.");
-//        }
-//    }
-//
-//    Object onSuccess() {
-//        employeeService.saveEmployee(employee);
-//        return EmployeeList.class;
-//    }
-//}
 package com.example.pages;
 
 import com.example.entity.Employee;
@@ -50,11 +13,12 @@ public class AddEmployee {
     private Form employeeForm;
 
     @Property
-    private Employee employee = new Employee();
+    private Employee employee = new Employee(); // This is the employee object from the form
 
     @Inject
-    private EmployeeService employeeService;
+    private EmployeeService employeeService; // EmployeeService to save data
 
+    // Form validation
     void onValidateFromEmployeeForm() {
         if (employee.getName() == null || employee.getName().trim().isEmpty()) {
             employeeForm.recordError("Name is required.");
@@ -67,13 +31,10 @@ public class AddEmployee {
         }
     }
 
+    // On success, save the employee and redirect to the Employee List
     Object onSuccess() {
-        Employee newEmployee = new Employee();
-        newEmployee.setName(employee.getName());
-        newEmployee.setAge(employee.getAge());
-        newEmployee.setAddress(employee.getAddress());
-
-        employeeService.saveEmployee(newEmployee);
-        return EmployeeList.class;
+        // You can directly pass the employee object to save in the database
+        employeeService.saveEmployee(employee); // The save logic will now use Hibernate
+        return EmployeeList.class; // Redirect to the Employee List page after saving
     }
 }
