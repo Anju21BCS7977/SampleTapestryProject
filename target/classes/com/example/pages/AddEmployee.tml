@@ -40,14 +40,9 @@
 <!--</html>-->
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <body>
-
-<!-- 🔽 Reusable Company Header Component -->
 <t:companyheader />
-
 <h2>Add New Employee</h2>
-
 <t:form t:id="employeeForm">
-    <!-- Display form-level validation errors -->
     <t:errors />
 
     <p>

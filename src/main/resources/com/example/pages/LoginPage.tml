@@ -50,6 +50,7 @@
 
 <!--</body>-->
 <!--</html>-->
+
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <head>
     <title>Login Page</title>
@@ -57,11 +58,29 @@
 <body>
 <t:companyheader />
 <h2>Login Page</h2>
+
+<!-- Login Form -->
 <t:form t:id="loginForm">
+    <!-- Display errors -->
     <t:errors />
-    <p>Username: <t:textfield t:id="username" value="username"/></p>
-    <p>Password: <t:passwordfield t:id="password" value="password"/></p>
-    <p><input type="submit" value="Login"/></p>
+
+    <!-- Username field with binding -->
+    <p>
+        <label for="username">Username:</label>
+        <t:textfield t:id="username" t:value="username" />
+    </p>
+
+    <!-- Password field with binding -->
+    <p>
+        <label for="password">Password:</label>
+        <t:passwordfield t:id="password" t:value="password" />
+    </p>
+
+    <!-- Submit button -->
+    <p>
+        <input type="submit" value="Login" />
+    </p>
 </t:form>
+
 </body>
 </html>

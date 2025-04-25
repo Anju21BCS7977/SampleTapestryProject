@@ -1,10 +1,21 @@
 package com.example.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "employees")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int age;
     private String address;
+    @OneToOne
+    @JoinColumn(name = "username",foreignKey = @ForeignKey(name="employee_userid_fk"))
+    private User user;
+
+
 
     // Getters and setters
     public int getId() { return id; }
@@ -18,4 +29,11 @@ public class Employee {
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

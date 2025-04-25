@@ -47,27 +47,186 @@
 
 <!--</body>-->
 <!--</html>-->
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"-->
+<!--      xmlns:p="tapestry:parameter">-->
+<!--<body>-->
+<!--<t:companyheader />-->
+<!--<h2>Employee List</h2>-->
+<!--<t:if test="employees">-->
+<!--    <t:grid source="employees" row="employee" include="id,name,age,address" add="actions">-->
+<!--        <p:actionsCell>-->
+<!--            <a t:id="view" t:type="actionlink" t:context="employee.id">View</a>-->
+<!--        </p:actionsCell>-->
+<!--    </t:grid>-->
+<!--</t:if>-->
+<!--<br/>-->
+<!--<a href="addemployee">Add New Employee</a>-->
+<!--</body>-->
+<!--</html>-->
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<head>-->
+<!--    <title>Employee List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<t:companyheader />-->
+<!--<h2>Employee List</h2>-->
+
+<!--<t:grid source="employees" t:id="employeeGrid">-->
+
+<!--</t:grid>-->
+
+<!--</body>-->
+<!--</html>-->
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<head>-->
+<!--    <title>Employee List</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<t:companyheader />-->
+
+<!--<h2>Employee List</h2>-->
+
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Age</th>-->
+<!--        <th>Address</th>-->
+<!--        <th>Actions</th>-->
+<!--    </tr>-->
+
+<!--    <t:loop source="employees" value="employee">-->
+<!--        <tr>-->
+<!--            <td>${employee.id}</td>-->
+<!--            <td>${employee.name}</td>-->
+<!--            <td>${employee.age}</td>-->
+<!--            <td>${employee.address}</td>-->
+<!--            <td>-->
+<!--                <t:actionlink event="viewEmployee" context="employee.id">View</t:actionlink>-->
+<!--                |-->
+<!--                <t:actionlink event="editEmployee" context="employee.id">Edit</t:actionlink>-->
+<!--                |-->
+<!--                <t:actionlink event="deleteEmployee" context="employee.id">Delete</t:actionlink>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </t:loop>-->
+<!--</table>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<head>-->
+<!--    <title>Employee List</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<t:companyheader />-->
+
+<!--<h2>Employee List</h2>-->
+
+<!--<t:if test="employees">-->
+<!--    <table border="1">-->
+<!--        <tr>-->
+<!--            <th>ID</th><th>Name</th><th>Age</th><th>Address</th><th>Actions</th>-->
+<!--        </tr>-->
+<!--        <t:loop source="employees" value="employee">-->
+<!--            <tr>-->
+<!--                <td><t:property value="employee.id"/></td>-->
+<!--                <td><t:property value="employee.name"/></td>-->
+<!--                <td><t:property value="employee.age"/></td>-->
+<!--                <td><t:property value="employee.address"/></td>-->
+<!--                <td>-->
+<!--                    <t:actionlink t:id="ViewEmployee" context="employee.id">View</t:actionlink> |-->
+<!--                    <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink> |-->
+<!--                    <t:actionlink t:id="DeleteEmployee" context="employee.id" onclick="return confirm('Are you sure?');">Delete</t:actionlink>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </t:loop>-->
+<!--    </table>-->
+<!--</t:if>-->
+
+<!--<t:if test="!employees || employees.isEmpty()">-->
+<!--    <p>No employees found.</p>-->
+<!--</t:if>-->
+
+<!--<a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>-->
+
+<!--</body>-->
+<!--</html>-->
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<head>-->
+<!--    <title>Employee List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<t:companyheader/>-->
+
+<!--<h2>Employee List</h2>-->
+
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>ID</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Age</th>-->
+<!--        <th>Address</th>-->
+<!--        <th>Actions</th>-->
+<!--    </tr>-->
+
+<!--    <t:loop source="employees" value="employee">-->
+<!--        <tr>-->
+<!--            <td>${employee.id}</td>-->
+<!--            <td>${employee.name}</td>-->
+<!--            <td>${employee.age}</td>-->
+<!--            <td>${employee.address}</td>-->
+<!--            <td>-->
+<!--                <t:actionlink t:id="ViewEmployee" context="employee.id">View</t:actionlink> |-->
+<!--                <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink> |-->
+<!--                <t:actionlink t:id="DeleteEmployee" context="employee.id">Delete</t:actionlink>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </t:loop>-->
+<!--</table>-->
+<!--&lt;!&ndash; Add New Employee Button &ndash;&gt;-->
+<!--<p>-->
+<!--    <a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>-->
+<!--</p>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
       xmlns:p="tapestry:parameter">
+<head>
+    <title>Employee List</title>
+</head>
 <body>
-
-<!-- 🔽 Reusable Company Header -->
-<t:companyheader />
+<t:companyheader/>
 
 <h2>Employee List</h2>
 
-<t:if test="employees">
-    <t:grid source="employees" row="employee" include="id,name,age,address" add="actions">
-        <p:actionsCell>
-            <a t:id="view" t:type="actionlink" t:context="employee.id">View</a>
-        </p:actionsCell>
-    </t:grid>
-</t:if>
+<!-- Grid with custom "Actions" column -->
+<t:grid source="employees"
+        row="employee"
+        rowsPerPage="100"
+        include="id, name, age, address"
+        add="actions">
+    <p:actionsCell>
+        <t:actionlink t:id="ViewEmployee" context="employee.id">View</t:actionlink>
+        |
+        <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink>
+        |
+        <t:actionlink t:id="DeleteEmployee" context="employee.id">Delete</t:actionlink>
+    </p:actionsCell>
+</t:grid>
 
-<br/>
-<!-- Link to Add New Employee -->
-<a href="addemployee">Add New Employee</a>
+<!-- Add New Employee Button -->
+<p>
+    <a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>
+</p>
 
 </body>
 </html>
-
