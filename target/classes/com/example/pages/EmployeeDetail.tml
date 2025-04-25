@@ -27,7 +27,6 @@
 </head>
 <body>
 
-<!-- 🔽 Reusable Company Header Component -->
 <t:companyheader />
 
 <h2>Employee Details</h2>
