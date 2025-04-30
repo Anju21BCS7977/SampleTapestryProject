@@ -16,6 +16,26 @@ public class Employee {
     private User user;
 
 
+    // Getter and Setter for role
+    @Column(name = "image_url") // Optional: if you have a column in the database
+    private String imageUrl;
+
+    // Getter and Setter for imageUrl
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    @Column(name = "designation")
+    private String designation;
+
+    // Getter and Setter
+    public String getDesignation() { return designation; }
+    public void setDesignation(String designation) { this.designation = designation; }
+
+
 
     // Getters and setters
     public int getId() { return id; }

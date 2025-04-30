@@ -1,11 +1,13 @@
 package com.example.pages;
 
 import com.example.entity.Employee;
+import com.example.entity.User;
 import com.example.services.EmployeeService;
 import jakarta.inject.Inject;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 
 public class EditEmployee {
@@ -16,6 +18,11 @@ public class EditEmployee {
 
     @Property
     private Employee employee;
+    @Property
+    private String loggedInUsername; // Declare this property so that Tapestry can access it
+
+    @Property
+    private User loggedInUser;
 
     @Inject
     private EmployeeService employeeService;
@@ -51,6 +58,10 @@ public class EditEmployee {
         }
         if (employee.getAddress() == null || employee.getAddress().trim().isEmpty()) {
             editEmployeeForm.recordError("Address is required.");
+        }
+        if (employee.getDesignation() == null || employee.getDesignation().trim().isEmpty()) {
+            editEmployeeForm.recordError("Designation is required.");
+
         }
     }
 

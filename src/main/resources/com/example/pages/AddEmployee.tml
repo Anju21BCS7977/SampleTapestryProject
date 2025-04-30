@@ -38,31 +38,35 @@
 <!--<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>-->
 <!--</body>-->
 <!--</html>-->
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
-<body>
-<t:companyheader />
-<h2>Add New Employee</h2>
-<t:form t:id="employeeForm">
-    <t:errors />
+    <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <body>
+    <t:companyheader loggedInUsername="loggedInUsername"/>
+    <h2>Add New Employee</h2>
+    <t:form t:id="employeeForm">
+        <t:errors />
 
-    <p>
-        Name: <t:textfield t:value="employee.name"/>
-    </p>
+        <p>
+            Name: <t:textfield t:value="employee.name"/>
+        </p>
 
-    <p>
-        Age: <t:textfield t:value="employee.age"/>
-    </p>
+        <p>
+            Age: <t:textfield t:value="employee.age"/>
+        </p>
 
-    <p>
-        Address: <t:textfield t:value="employee.address"/>
-    </p>
+        <p>
+            Address: <t:textfield t:value="employee.address"/>
+        </p>
+        <p>
+            Designation: <t:textfield t:value="employee.designation"/>
+        </p>
 
-    <p>
-        <input type="submit" value="Save Employee"/>
-    </p>
-</t:form>
 
-<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>
+        <p>
+            <input type="submit" value="Save Employee"/>
+        </p>
+    </t:form>
 
-</body>
-</html>
+    <p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>
+
+    </body>
+    </html>

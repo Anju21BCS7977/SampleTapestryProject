@@ -4,7 +4,7 @@
     <title>Edit Employee</title>
 </head>
 <body>
-<t:companyheader />
+<t:companyheader loggedInUsername="loggedInUsername"/>
 <h2>Edit Employee</h2>
 
 <t:form t:id="editEmployeeForm">
@@ -23,6 +23,10 @@
     <p>
         <label>Address:</label><br/>
         <t:textfield t:value="employee.address" />
+    </p>
+    <p>
+        <label>Designation:</label><br/>
+        <t:textfield t:value="employee.designation" />
     </p>
 
     <p>

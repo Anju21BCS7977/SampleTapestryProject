@@ -1,8 +1,22 @@
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<body>-->
+<!--<div style="background-color: #f2f2f2; padding: 10px; border-bottom: 1px solid #ccc;">-->
+<!--    <h3>${companyName}</h3>-->
+<!--    <p>${companyAddress}</p>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <body>
-<div style="background-color: #f2f2f2; padding: 10px; border-bottom: 1px solid #ccc;">
-    <h3>${companyName}</h3>
-    <p>${companyAddress}</p>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f2f2f2;">
+    <div>
+        <h1>${companyName}</h1>
+        <p>${companyAddress}</p>
+    </div>
+    <div>
+        <p>Welcome, <strong>${displayUsername}</strong></p>
+    </div>
 </div>
+<hr/>
 </body>
 </html>

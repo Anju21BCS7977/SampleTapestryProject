@@ -65,22 +65,121 @@
 <!--</body>-->
 <!--</html>-->
 
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"  xmlns:p="tapestry:parameter">
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"  xmlns:p="tapestry:parameter">-->
+<!--<head>-->
+<!--    <title>Employee Details</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<t:companyheader loggedInUsername="loggedInUsername"/>-->
+
+<!--<h2>Employee Details</h2>-->
+
+<!--<t:if test="employee">-->
+<!--    <p><strong>ID:</strong> ${employee.id}</p>-->
+<!--    <p><strong>Name:</strong> ${employee.name}</p>-->
+<!--    <p><strong>Age:</strong> ${employee.age}</p>-->
+<!--    <p><strong>Address:</strong> ${employee.address}</p>-->
+
+    <!-- Show user details if user exists -->
+<!--    <t:if test="user">-->
+<!--        <p><strong>Username:</strong> ${user.username}</p>-->
+<!--        <p><strong>Role:</strong> <t:if test="userRole"> ${userRole.name} <p:else>NOT_DEFINED</p:else></t:if></p>  &lt;!&ndash; Display role name &ndash;&gt;-->
+<!--    </t:if>-->
+
+<!--    &lt;!&ndash; Show 'Create User' button if no user exists &ndash;&gt;-->
+<!--    <t:if test="admin">-->
+<!--        <t:if test="!user">-->
+<!--            <p><a t:type="eventlink" t:event="CreateUser">Create User</a></p>-->
+<!--        </t:if>-->
+<!--    </t:if>-->
+
+
+
+<!--</t:if>-->
+
+<!--<t:if test="!employee">-->
+<!--    <p>Employee not found.</p>-->
+<!--</t:if>-->
+
+<!--<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">-->
+<!--<head>-->
+<!--    <title>Employee Details</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<t:companyheader loggedInUsername="loggedInUsername"/>-->
+
+<!--<h2>Employee Details</h2>-->
+
+<!--<t:if test="employee">-->
+<!--    <p><strong>ID:</strong> ${employee.id}</p>-->
+<!--    <p><strong>Name:</strong> ${employee.name}</p>-->
+<!--    <p><strong>Age:</strong> ${employee.age}</p>-->
+<!--    <p><strong>Address:</strong> ${employee.address}</p>-->
+
+<!--    &lt;!&ndash; Show employee's image thumbnail with ActionLink &ndash;&gt;-->
+<!--    <t:if test="employee.imageUrl">-->
+<!--        <p>-->
+<!--            <t:actionlink t:id="showImagePopup" t:zone="popupZone">-->
+<!--                <img src="${employee.imageUrl}" alt="Employee Image" width="100" height="100"/>-->
+<!--            </t:actionlink>-->
+
+<!--        </p>-->
+<!--    </t:if>-->
+<!--</t:if>-->
+
+<!--&lt;!&ndash; If no employee found &ndash;&gt;-->
+<!--<t:if test="!employee">-->
+<!--    <p>Employee not found.</p>-->
+<!--</t:if>-->
+
+<!--&lt;!&ndash; Popup for displaying the full-size image &ndash;&gt;-->
+<!--<t:zone t:id="popupZone" id="popupZone">-->
+
+<!--<t:if test="popupVisible">-->
+<!--    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);-->
+<!--                    background-color: #fff; padding: 20px; border: 2px solid #ccc; box-shadow: 0px 0px 10px #999;">-->
+<!--        <h3>Employee Image</h3>-->
+<!--        <img src="${employee.imageUrl}" alt="Employee Image" width="300"/>-->
+<!--        <br/><br/>-->
+<!--        <t:eventlink event="closePopup">Close</t:eventlink>-->
+<!--    </div>-->
+<!--</t:if>-->
+<!--</t:zone>-->
+
+
+<!--<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>-->
+
+
+<!--</body>-->
+<!--</html>-->
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" >
+
+
 <head>
     <title>Employee Details</title>
 </head>
 <body>
-<t:companyheader />
+<!-- Company Header with Logged In Username -->
+
+<t:companyheader loggedInUsername="loggedInUsername"/>
+
 
 <h2>Employee Details</h2>
 
-<t:if test="employee">
-    <p><strong>ID:</strong> ${employee.id}</p>
-    <p><strong>Name:</strong> ${employee.name}</p>
-    <p><strong>Age:</strong> ${employee.age}</p>
-    <p><strong>Address:</strong> ${employee.address}</p>
 
-    <!-- Show user details if user exists -->
+<!-- Employee Information Display -->
+<t:if test="employee">
+<p><strong>ID:</strong> ${employee.id}</p>
+<p><strong>Name:</strong> ${employee.name}</p>
+<p><strong>Age:</strong> ${employee.age}</p>
+<p><strong>Address:</strong> ${employee.address}</p>
+    <p><strong>Designation:</strong> ${employee.designation}</p>
+
     <t:if test="user">
         <p><strong>Username:</strong> ${user.username}</p>
         <p><strong>Role:</strong> <t:if test="userRole"> ${userRole.name} <p:else>NOT_DEFINED</p:else></t:if></p>  <!-- Display role name -->
@@ -93,14 +192,50 @@
         </t:if>
     </t:if>
 
+<t:if test="loggedInUser">
 
-
+    <t:promotelinkcomponent employee="employee"/>
 </t:if>
 
+
+
+
+    <!-- Show employee's image thumbnail with ActionLink -->
+<t:if test="employee.imageUrl">
+    <p>
+        <t:actionlink t:id="showImagePopup" t:zone="popupZone">
+            <img src="${employee.imageUrl}" alt="Employee Image" width="100" height="100"/>
+        </t:actionlink>
+    </p>
+</t:if>
+</t:if>
+
+<!-- If no employee found -->
 <t:if test="!employee">
-    <p>Employee not found.</p>
+<p>Employee not found.</p>
 </t:if>
 
-<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>
+<!-- Popup for displaying the full-size image -->
+<t:zone t:id="popupZone" id="popupZone">
+<t:if test="popupVisible">
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                    background-color: #fff; padding: 20px; border: 2px solid #ccc; box-shadow: 0px 0px 10px #999;">
+        <h3>Employee Image</h3>
+        <img src="${employee.imageUrl}" alt="Employee Image" width="300"/>
+        <br/><br/>
+        <t:eventlink event="closePopup">Close</t:eventlink>
+    </div>
+</t:if>
+</t:zone>
+
+<!-- Logout Button -->
+<p style="position: absolute; top: 10px; right: 10px;">
+    <t:pagelink t:id="logoutButton" t:page="LoginPage" t:listener="onLogoutPage" style="background-color: #f44336; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">[LOGOUT]</t:pagelink>
+</p>
+
+<!-- Back to Employee List -->
+<p>
+<a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a>
+</p>
 </body>
 </html>

@@ -76,4 +76,7 @@ INSERT INTO roles (name) VALUES
 ALTER TABLE users
     ADD COLUMN role_id int default 2,
         ADD CONSTRAINT users_role_id_fk FOREIGN KEY (role_id) REFERENCES roles(id);
+        ALTER TABLE employees ADD COLUMN designation VARCHAR(100);
+        update employees set designation = 'EMPLOYEE';
+
 

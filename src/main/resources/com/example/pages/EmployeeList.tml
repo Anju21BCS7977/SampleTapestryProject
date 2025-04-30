@@ -204,7 +204,7 @@
     <title>Employee List</title>
 </head>
 <body>
-<t:companyheader/>
+<t:companyheader loggedInUsername="loggedInUsername"/>
 
 <h2>Employee List</h2>
 
@@ -212,21 +212,29 @@
 <t:grid source="employees"
         row="employee"
         rowsPerPage="100"
-        include="id, name, age, address"
+        include="id, name, age, address, designation"
         add="actions">
     <p:actionsCell>
+        <!-- View button always visible -->
         <t:actionlink t:id="ViewEmployee" context="employee.id">View</t:actionlink>
-        |
-        <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink>
-        |
-        <t:actionlink t:id="DeleteEmployee" context="employee.id">Delete</t:actionlink>
+
+        <!-- Only show Edit and Delete buttons if admin -->
+        <t:if test="isAdmin">
+            |
+            <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink>
+            |
+            <t:actionlink t:id="DeleteEmployee" context="employee.id">Delete</t:actionlink>
+        </t:if>
     </p:actionsCell>
 </t:grid>
 
 <!-- Add New Employee Button -->
-<p>
-    <a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>
-</p>
+<t:if test="isAdmin">
+    <p>
+        <a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>
+    </p>
+</t:if>
+
 
 </body>
 </html>
