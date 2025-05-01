@@ -10,6 +10,8 @@ import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 
+import java.util.Date;
+
 public class EditEmployee {
 
     @Property
@@ -19,7 +21,7 @@ public class EditEmployee {
     @Property
     private Employee employee;
     @Property
-    private String loggedInUsername; // Declare this property so that Tapestry can access it
+    private String loggedInUsername;
 
     @Property
     private User loggedInUser;
@@ -61,12 +63,21 @@ public class EditEmployee {
         }
         if (employee.getDesignation() == null || employee.getDesignation().trim().isEmpty()) {
             editEmployeeForm.recordError("Designation is required.");
-
         }
+        if (employee.getDob() == null) {
+            editEmployeeForm.recordError("Date of Birth is required.");
+        }
+        if (employee.getDob() != null && employee.getDob().compareTo(new Date())>0) {
+            editEmployeeForm.recordError("Date of Birth cannot be in the future.");
+        }
+        if (employee.getGender() == null || employee.getGender().trim().isEmpty()) {
+            editEmployeeForm.recordError("Gender is required.");
+        }
+
     }
 
     Object onSuccess() {
-        employeeService.updateEmployee(employee); // Hibernate-backed update
+        employeeService.updateEmployee(employee);
         return EmployeeList.class;
     }
 }

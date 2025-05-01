@@ -1,7 +1,6 @@
 package com.example.entity;
-
 import jakarta.persistence.*;
-
+import java.util.Date;
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -14,30 +13,36 @@ public class Employee {
     @OneToOne
     @JoinColumn(name = "username",foreignKey = @ForeignKey(name="employee_userid_fk"))
     private User user;
-
-
-    // Getter and Setter for role
-    @Column(name = "image_url") // Optional: if you have a column in the database
+    @Column(name = "image_url")
     private String imageUrl;
-
-    // Getter and Setter for imageUrl
     public String getImageUrl() {
         return imageUrl;
     }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+        @Column(name = "dob")
+        private Date dob;
+
+        public Date getDob() {
+            return dob;
+        }
+
+        public void setDob(Date dob) {
+            this.dob = dob;
+        }
     @Column(name = "designation")
     private String designation;
-
-    // Getter and Setter
     public String getDesignation() { return designation; }
     public void setDesignation(String designation) { this.designation = designation; }
-
-
-
-    // Getters and setters
+    @Column(name = "gender")
+    private String gender;
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

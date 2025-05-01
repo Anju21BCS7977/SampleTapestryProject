@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findById(int id) {
         try (Session session = sessionFactory.openSession()) {
-            return session.get(User.class, id);  // Retrieve the user by ID from the database
+            return session.get(User.class, id);
         }
     }
 

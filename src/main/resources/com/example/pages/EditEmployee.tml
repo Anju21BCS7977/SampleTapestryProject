@@ -24,9 +24,20 @@
         <label>Address:</label><br/>
         <t:textfield t:value="employee.address" />
     </p>
+
     <p>
         <label>Designation:</label><br/>
         <t:textfield t:value="employee.designation" />
+    </p>
+
+    <p>
+        <label>Dob:</label><br/>
+        <t:datefield t:value="employee.dob" />
+    </p>
+
+    <p>
+        <label>Gender:</label><br/>
+        <t:textfield t:value="employee.gender" />
     </p>
 
     <p>
@@ -37,5 +48,7 @@
 <p>
     <a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a>
 </p>
+
+
 </body>
 </html>

@@ -2,8 +2,9 @@ CREATE TABLE employees (
 id SERIAL PRIMARY KEY,
 name VARCHAR(100),
 age INTEGER,
-address VARCHAR(255)
+address VARCHAR(255),
 );
+drop table employees;
 
 INSERT INTO employees
 (name, age, address) VALUES
@@ -27,20 +28,19 @@ INSERT INTO employees
 ('Varun Joshi', 33, 'Indore'),
 ('Tanvi Ahuja', 30, 'Bhopal'),
 ('Nikhil Roy', 32, 'Visakhapatnam');
+ALTER TABLE employees
+ADD COLUMN username VARCHAR(50),
+ADD CONSTRAINT employee_userid_fk FOREIGN KEY (username) REFERENCES users(username);
+
+
+
 
 -- Create the users table
 CREATE TABLE users (
-    id serial PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );
-
-
-ALTER TABLE employees
-    ADD COLUMN username VARCHAR(50),
-        ADD CONSTRAINT employee_userid_fk FOREIGN KEY (username) REFERENCES users(username);
-
-
 -- Insert 20 user records
 INSERT INTO users (username, password) VALUES
 ('user01', 'Pass@1234'),
@@ -63,20 +63,54 @@ INSERT INTO users (username, password) VALUES
 ('user18', 'Learn@3434'),
 ('user19', 'Skill#6565'),
 ('user20', 'Task!9999');
+alter table users
+drop column role_id
+ALTER TABLE users
+ADD COLUMN role_id int default 2,
+ADD CONSTRAINT users_role_id_fk FOREIGN KEY (role_id) REFERENCES roles(id);
 
+alter table users
+drop column role
+
+
+select * from users;
+select * from employees;
+SELECT * FROM employee WHERE id = ?;
 CREATE TABLE roles (
 id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
 );
-
+select * from roles;
 INSERT INTO roles (name) VALUES
 ('ADMIN'),
-('CLIENT');
+('CLIENT')
+UPDATE users SET role_id = 2 WHERE username IN ('user06', 'user11','user17');
 
-ALTER TABLE users
-    ADD COLUMN role_id int default 2,
-        ADD CONSTRAINT users_role_id_fk FOREIGN KEY (role_id) REFERENCES roles(id);
-        ALTER TABLE employees ADD COLUMN designation VARCHAR(100);
-        update employees set designation = 'EMPLOYEE';
+UPDATE users
+SET role_id = 1  -- 1 for ADMIN
+WHERE username IN ('user06', 'user11', 'user17');
+SELECT username, role_id FROM users
+WHERE username IN ('user06', 'user11', 'user17');
+update employees set username=null;
+delete from users;
+
+
+
+INSERT INTO users (username, password) values
+('user01', 'Pass@1234')
+select * from employees
+select * from users
+select * from employees where username is not null;
+ALTER TABLE employees ADD COLUMN designation VARCHAR(100);
+update employees set designation = 'EMPLOYEE';
+ALTER TABLE employees ADD COLUMN dob DATE;
+UPDATE employees SET dob = '1995-04-29'; -- Set same birthday for all
+ALTER TABLE employees ADD COLUMN gender VARCHAR(10);
+update employees set gender = 'MALE';
+
+
+
+
+
 
 

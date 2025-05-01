@@ -1,12 +1,3 @@
-<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
-<!--<body>-->
-<!--<h2>Employee Details</h2>-->
-<!--<p><strong>ID:</strong> ${employee.id}</p>-->
-<!--<p><strong>Name:</strong> ${employee.name}</p>-->
-<!--<p><strong>Age:</strong> ${employee.age}</p>-->
-<!--<p><strong>Address:</strong> ${employee.address}</p>-->
-<!--</body>-->
-<!--</html>-->
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <body>
 <t:companyheader loggedInUsername="loggedInUsername"/>
@@ -16,8 +7,7 @@
 <p><strong>Age:</strong> ${employee.age}</p>
 <p><strong>Address:</strong> ${employee.address}</p>
 <p><strong>Designation:</strong> ${employee.designation}</p>
-
-
-
+<p><strong>DOB:</strong> ${employee.dob}</p>
+<p><strong>Gender:</strong> ${employee.gender}</p>
 </body>
 </html>

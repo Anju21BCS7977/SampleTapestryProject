@@ -3,11 +3,6 @@ package com.example.entity;
 import jakarta.persistence.*;
 
 import java.nio.file.Path;
-
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.Table;
-//
 @Entity
 @Table(name = "users")
 public class User {
@@ -47,5 +42,5 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    // Getters and Setters
+
 }

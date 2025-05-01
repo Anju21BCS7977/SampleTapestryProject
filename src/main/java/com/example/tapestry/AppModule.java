@@ -30,8 +30,6 @@ public class AppModule {
 
 
     public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
-//        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
-//        configuration.add(SymbolConstants.DEFAULT_STYLESHEET, "context:assets/css/empty.css");
         configuration.add("tapestry.production-mode", false);
         configuration.add("tapestry.reload-classes", true);
         configuration.add("tapestry.reload-pages", true);

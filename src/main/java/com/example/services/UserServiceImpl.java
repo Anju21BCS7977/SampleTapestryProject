@@ -60,5 +60,4 @@ public class UserServiceImpl implements UserService {
             userDao.saveUser(user);  // Save the updated user
         }
     }
-
 }
