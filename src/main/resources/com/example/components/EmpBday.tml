@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:my="tapestry:components">
+
+<t:if test="birthdayToday">
+    <t:WishBanner employee="employee"/>
+</t:if>
+
+</html>

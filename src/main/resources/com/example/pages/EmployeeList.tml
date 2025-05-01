@@ -1,66 +1,41 @@
-<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">-->
-<!--<body>-->
-<!--<h2>Employee List</h2>-->
-<!--<t:if test="employees">-->
-<!--    <t:grid source="employees" row="employee" include="id,name,age,address" add="actions">-->
-<!--        <p:actionsCell><a t:id="view"  t:type="actionlink" t:context="employee.id">View</a></p:actionsCell>-->
-<!--    </t:grid>-->
-<!--</t:if>-->
-<!--</body>-->
-<!--</html>-->
-<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
-<!--<head><title>Employee List</title></head>-->
-<!--<body>-->
-<!--<h2>Employee List</h2>-->
-
-<!--<t:if test="employees.size() > 0">-->
-<!--    <t:grid source="employees" row="employee">-->
-<!--        <t:column title="ID" cell="employee.id">-->
-<!--            <t:actionlink event="view" context="employee.id">${employee.id}</t:actionlink>-->
-<!--        </t:column>-->
-<!--        <t:column property="name"/>-->
-<!--        <t:column property="age"/>-->
-<!--        <t:column property="address"/>-->
-<!--    </t:grid>-->
-<!--</t:if>-->
-
-<!--<br/>-->
-<!--<a href="addemployee">Add New Employee</a>-->
-<!--</body>-->
-<!--</html>-->
-<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"-->
-<!--      xmlns:p="tapestry:parameter">-->
-<!--<body>-->
-<!--<h2>Employee List</h2>-->
-
-<!--<t:if test="employees">-->
-<!--    <t:grid source="employees" row="employee" include="id,name,age,address" add="actions">-->
-<!--        <p:actionsCell>-->
-<!--            <a t:id="view" t:type="actionlink" t:context="employee.id">View</a>-->
-<!--        </p:actionsCell>-->
-<!--    </t:grid>-->
-<!--</t:if>-->
-
-<!--<br/>-->
-<!--&lt;!&ndash; Link to Add New Employee &ndash;&gt;-->
-<!--<a href="addemployee">Add New Employee</a>-->
-
-<!--</body>-->
-<!--</html>-->
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
       xmlns:p="tapestry:parameter">
+<head>
+    <title>Employee List</title>
+</head>
 <body>
-<t:companyheader />
+<t:companyheader loggedInUsername="loggedInUsername"/>
+
 <h2>Employee List</h2>
-<t:if test="employees">
-    <t:grid source="employees" row="employee" include="id,name,age,address" add="actions">
-        <p:actionsCell>
-            <a t:id="view" t:type="actionlink" t:context="employee.id">View</a>
-        </p:actionsCell>
-    </t:grid>
+
+<!-- Grid with custom "Actions" column -->
+<t:grid source="employees"
+        row="employee"
+        rowsPerPage="100"
+        include="id, name, age, address, designation, dob, gender"
+        add="actions">
+
+    <p:actionsCell>
+        <!-- View button always visible -->
+        <t:actionlink t:id="ViewEmployee" context="employee.id">View</t:actionlink>
+
+        <!-- Only show Edit and Delete buttons if admin -->
+        <t:if test="isAdmin">
+            |
+            <t:actionlink t:id="EditEmployee" context="employee.id">Edit</t:actionlink>
+            |
+            <t:actionlink t:id="DeleteEmployee" context="employee.id">Delete</t:actionlink>
+        </t:if>
+    </p:actionsCell>
+</t:grid>
+
+<!-- Add New Employee Button -->
+<t:if test="isAdmin">
+    <p>
+        <a t:type="pagelink" t:page="AddEmployee">Add New Employee</a>
+    </p>
 </t:if>
-<br/>
-<a href="addemployee">Add New Employee</a>
+
+
 </body>
 </html>
-
