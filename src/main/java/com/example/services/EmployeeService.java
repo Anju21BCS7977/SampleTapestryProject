@@ -8,5 +8,7 @@ public interface EmployeeService {
     void deleteEmployee(int id);
     List<Employee> getAllEmployees();
     void promoteEmployee(Employee employee);
+    List<Employee> searchEmployeesByName(String keyword);
+
 
 }

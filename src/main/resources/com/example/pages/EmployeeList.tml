@@ -5,8 +5,11 @@
 </head>
 <body>
 <t:companyheader loggedInUsername="loggedInUsername"/>
+<t:pagelink page="SearchEmployee">Search Employee</t:pagelink>
+
 
 <h2>Employee List</h2>
+
 
 <!-- Grid with custom "Actions" column -->
 <t:grid source="employees"

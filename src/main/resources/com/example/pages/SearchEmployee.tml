@@ -1,0 +1,55 @@
+<!--<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">-->
+<!--<body>-->
+<!--<t:companyheader />-->
+
+<!--<t:form t:id="searchForm" t:action="onSubmitSearch">-->
+<!--    <label for="searchText">Search Employee:</label>-->
+<!--    <t:textfield t:id="searchText" value="searchText" />-->
+<!--    <t:submit value="Search" />-->
+<!--</t:form>-->
+
+<!--<t:if test="${!searchResults.isEmpty()}">-->
+<!--    <h2>Search Results:</h2>-->
+<!--    <ul>-->
+<!--        &lt;!&ndash; Loop through the searchResults and refer to each item as 'employee' &ndash;&gt;-->
+<!--        <t:loop source="searchResults" value="employee">-->
+<!--            <li>${employee.name} (ID: ${employee.id})</li>-->
+<!--        </t:loop>-->
+<!--    </ul>-->
+<!--</t:if>-->
+
+<!--<t:if test="${searchResults.isEmpty()}">-->
+<!--    <p>No results found.</p>-->
+<!--</t:if>-->
+<!--<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" >
+<body>
+<t:companyheader />
+
+<t:form t:id="searchForm" t:action="onSubmitSearch">
+    <label for="searchText">Search Employee:</label>
+    <t:textfield t:id="searchText" value="searchText" placeholder="Enter employee name or ID" />
+    <t:submit value="Search" />
+</t:form>
+
+<t:if test="${!searchResults.isEmpty()}">
+    <h2>Search Results:</h2>
+    <ul>
+        <!-- Loop through the searchResults and refer to each item as 'employee' -->
+        <t:loop source="searchResults" value="employee">
+            <li>${employee.name} (ID: ${employee.id})</li>
+        </t:loop>
+    </ul>
+</t:if>
+
+<t:if test="${searchResults.isEmpty()}">
+    <p>No results found.</p>
+</t:if>
+<p><a t:type="pagelink" t:page="EmployeeList">Back to Employee List</a></p>
+
+</body>
+</html>
