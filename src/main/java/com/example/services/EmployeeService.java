@@ -9,6 +9,8 @@ public interface EmployeeService {
     List<Employee> getAllEmployees();
     void promoteEmployee(Employee employee);
     List<Employee> searchEmployeesByName(String keyword);
+    List<String> findEmployeeNamesByPrefix(String prefix);
+
 
 
 }

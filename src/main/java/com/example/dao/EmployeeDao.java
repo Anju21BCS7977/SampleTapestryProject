@@ -11,5 +11,7 @@ public interface EmployeeDao {
     void delete(int id);
     List<Employee> findAll();
     List<Employee> searchEmployeesByName(String keyword);
+    List<String> findEmployeeNamesByPrefix(String prefix);
+
 
 }

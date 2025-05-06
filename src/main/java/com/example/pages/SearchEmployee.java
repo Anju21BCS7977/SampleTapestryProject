@@ -4,6 +4,7 @@ import com.example.entity.Employee;
 import com.example.services.EmployeeService;
 import jakarta.inject.Inject;
 import org.apache.tapestry5.annotations.ActivationRequestParameter;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
 
 import java.util.ArrayList;
@@ -18,15 +19,15 @@ public class SearchEmployee {
     @ActivationRequestParameter
     private String searchText;  // Search text entered by the user
 
-   
-
     @Property
     private Employee employee;  // Used to display employee details in the loop
 
     // Method to handle search action
-
-
     public List<Employee> getSearchResults() {
         return employeeService.searchEmployeesByName(searchText);
+    }
+    @OnEvent(value = "provideCompletions", component = "searchText")
+    public List<String> autoCompleteFromSearchText(String partial) {
+        return employeeService.findEmployeeNamesByPrefix(partial);
     }
 }

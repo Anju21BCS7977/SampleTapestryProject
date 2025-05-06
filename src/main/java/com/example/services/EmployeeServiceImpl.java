@@ -39,6 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> searchEmployeesByName(String keyword) {
         return employeeDao.searchEmployeesByName(keyword);
     }
+    @Override
+    public List<String> findEmployeeNamesByPrefix(String prefix) {
+        return employeeDao.findEmployeeNamesByPrefix(prefix);
+    }
+
 
 
     @Override

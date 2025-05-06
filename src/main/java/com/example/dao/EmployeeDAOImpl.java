@@ -73,6 +73,13 @@ public class EmployeeDAOImpl implements EmployeeDao {
             return query.getResultList();
         }
     }
-
-
+    @Override
+    public List<String> findEmployeeNamesByPrefix(String prefix) {
+        try (Session session = sessionFactory.openSession()) {
+            String sql = "SELECT name FROM employees WHERE search_vector @@ to_tsquery(:query)";
+            NativeQuery<String> query = session.createNativeQuery(sql);
+            query.setParameter("query", prefix + ":*"); // Prefix search for full-text
+            return query.getResultList();
+        }
+    }
 }
