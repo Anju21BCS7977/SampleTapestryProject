@@ -32,9 +32,6 @@ ALTER TABLE employees
 ADD COLUMN username VARCHAR(50),
 ADD CONSTRAINT employee_userid_fk FOREIGN KEY (username) REFERENCES users(username);
 
-
-
-
 -- Create the users table
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -75,7 +72,7 @@ drop column role
 
 select * from users;
 select * from employees;
-SELECT * FROM employee WHERE id = ?;
+SELECT * FROM employee WHERE id = ?;  -- Replace ? with the actual employee ID you're testing.
 CREATE TABLE roles (
 id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -94,8 +91,6 @@ WHERE username IN ('user06', 'user11', 'user17');
 update employees set username=null;
 delete from users;
 
-
-
 INSERT INTO users (username, password) values
 ('user01', 'Pass@1234')
 select * from employees
@@ -108,9 +103,18 @@ UPDATE employees SET dob = '1995-04-29'; -- Set same birthday for all
 ALTER TABLE employees ADD COLUMN gender VARCHAR(10);
 update employees set gender = 'MALE';
 
+ALTER TABLE employees
+ADD COLUMN search_vector tsvector
+GENERATED ALWAYS AS (to_tsvector('english', name)) STORED;
 
+CREATE INDEX idx_employees_search_vector
+ON employees
+USING GIN (search_vector);
 
+SELECT id, name, search_vector FROM employees;
 
+SELECT * FROM employees
+WHERE search_vector @@ to_tsquery('Man:*');
 
 
 

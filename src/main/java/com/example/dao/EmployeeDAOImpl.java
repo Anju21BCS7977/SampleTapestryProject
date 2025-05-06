@@ -4,6 +4,7 @@ import com.example.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -61,6 +62,24 @@ public class EmployeeDAOImpl implements EmployeeDao {
     public List<Employee> findAll() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Employee", Employee.class).list();
+        }
+    }
+    @Override
+    public List<Employee> searchEmployeesByName(String keyword) {
+        try (Session session = sessionFactory.openSession()) {
+            String sql = "SELECT * FROM employees WHERE search_vector @@ to_tsquery(:query)";
+            NativeQuery<Employee> query = session.createNativeQuery(sql, Employee.class);
+            query.setParameter("query", keyword + ":*"); // Prefix search
+            return query.getResultList();
+        }
+    }
+    @Override
+    public List<String> findEmployeeNamesByPrefix(String prefix) {
+        try (Session session = sessionFactory.openSession()) {
+            String sql = "SELECT name FROM employees WHERE search_vector @@ to_tsquery(:query)";
+            NativeQuery<String> query = session.createNativeQuery(sql);
+            query.setParameter("query", prefix + ":*"); // Prefix search for full-text
+            return query.getResultList();
         }
     }
 }
